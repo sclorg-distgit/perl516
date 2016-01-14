@@ -1,0 +1,16 @@
+# %%perl_bootstrap 1
+
+# If macros for tests sub-package are not define on the system 
+# the wil be defined
+%{!?tests_req:%tests_req() %{?@SCL@tests_req}}
+%{!?tests_subpackage_requires:%tests_subpackage_requires() %{?@SCL@tests_subpackage_requires}}
+%{!?perl_default_subpackage_tests:%perl_default_subpackage_tests %{?@SCL@perl_default_subpackage_tests}}
+%{!?perl_default_filter:%perl_default_filter %{?@SCL@perl_default_filter}}
+
+%scl_package_override() %{expand: \
+%global __perl %_scl_root/usr/bin/perl \
+%global __perl_requires /usr/lib/rpm/perl.req.stack \
+%global __perl_provides /usr/lib/rpm/perl.prov.stack \
+%global __perllib_requires /usr/lib/rpm/perl.req.stack \
+%global __perllib_provides /usr/lib/rpm/perl.prov.stack \
+}
