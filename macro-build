@@ -1,0 +1,13 @@
+%__perl %_scl_root/usr/bin/perl
+%__perl_provides /usr/lib/rpm/perl.prov.stack
+%__perl_requires /usr/lib/rpm/perl.req.stack
+#%%perl_bootstrap 1
+
+# 
+# Could not use scl_package_override, because it does not work properly 
+# on RHEL 6
+%perl_default_filter %{?@SCL@perl_default_filter}
+%tests_req() %{?@SCL@tests_req}
+%tests_subpackage_requires() %{?@SCL@tests_subpackage_requires}
+%perl_default_subpackage_tests %{?@SCL@perl_default_subpackage_tests}
+
